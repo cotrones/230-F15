@@ -6,8 +6,21 @@ public class RecursiveInsertionSorter {
 	}
 
 	private static int[] sort(int[] unsorted, int endIndex) {
-		// TODO implement recursive insertion sort where
-		// endIndex is the index of the last unsorted element
-		return null;
+		if (endIndex == 0) {
+			return unsorted;
+		}
+		else {
+			sort(unsorted, endIndex - 1);
+			int temp = unsorted[endIndex];
+			int i = endIndex - 1;
+			while ( i>- 1 && temp < unsorted[i]){
+				unsorted[i + 1] = unsorted[i];
+				i--;
+			}
+			unsorted[i + 1] = temp;
+			return unsorted;
+		}
+		
 	}
+	
 }
