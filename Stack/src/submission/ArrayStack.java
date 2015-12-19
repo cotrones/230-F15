@@ -3,37 +3,43 @@ package submission;
 import adt.Stack;
 
 public class ArrayStack<T> implements Stack<T> {
-	private T[] data;
-	private int top;
+	@SuppressWarnings("unchecked")
+	private T[] data = (T[]) new Object[100];
+	private int top = -1;
 
 	@Override
 	public void push(T newEntry) {
-		// TODO Auto-generated method stub
-		
+		top++;
+		data[top] = newEntry;
 	}
 
 	@Override
 	public T pop() {
-		// TODO Auto-generated method stub
+		if (!isEmpty()) {
+			T temp = data[top];
+			data[top] = null;
+			top--;
+			return temp;
+		}
 		return null;
 	}
 
 	@Override
 	public T peek() {
-		// TODO Auto-generated method stub
+		if (!isEmpty()) {
+			return data[top];
+		}
 		return null;
 	}
 
 	@Override
 	public boolean isEmpty() {
-		// TODO Auto-generated method stub
-		return false;
+		return top == -1;
 	}
 
 	@Override
 	public void clear() {
-		// TODO Auto-generated method stub
-		
+		top = -1;
 	}
 	
 	public String toString() {
@@ -42,6 +48,15 @@ public class ArrayStack<T> implements Stack<T> {
 			s += "| " + data[i] + " |\n";
 		s+= "+++++\n";
 		return s;
+	}
+	
+	public static void main(String args[]) {
+		ArrayStack<String> as = new ArrayStack<>();
+		as.push("Thomas");
+		as.push("Gerald");
+		as.pop();
+		as.push("Cotroneo");
+		as.peek();
 	}
 
 }
