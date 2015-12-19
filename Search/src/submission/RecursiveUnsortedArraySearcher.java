@@ -10,6 +10,12 @@ public class RecursiveUnsortedArraySearcher {
 	private static int search(int[] a, int key, int endIndex) {
 		// Returns the index of the key or
 		// -1 if not found
-		return -1;
+		if (key == a[endIndex])
+			return endIndex;
+		else if (endIndex == 0)
+			return -1;
+		else
+			return search(a, key, (endIndex - 1));
 	}
+	
 }
