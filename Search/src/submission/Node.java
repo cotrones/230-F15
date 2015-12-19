@@ -1,8 +1,8 @@
 package submission;
-
+//had to make num and next visible
 public class Node {
-	  private int  num; // Entry in bag
-	  private Node next; // Link to next node
+	int  num; // Entry in bag
+	Node next; // Link to next node
 
 		public Node(int i)
 		{
