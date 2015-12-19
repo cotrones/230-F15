@@ -65,6 +65,10 @@ public class ArrayQueue<T> implements Queue<T> {
 	public static void main(String args[]) {
 		ArrayQueue<String> aq = new ArrayQueue<String>();
 		aq.enqueue("Thomas");
+		aq.enqueue("Gerald");
+		aq.dequeue();
+		aq.enqueue("Cotroneo");
+		aq.peek();
 	}
 
 }

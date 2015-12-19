@@ -4,35 +4,46 @@ import adt.Queue;
 
 public class LinkedQueue<T> implements Queue<T> {
 	private Node head, tail;
+	private int numEntries = 0;
 	
 	@Override
 	public void enqueue(T newEntry) {
-		// TODO Auto-generated method stub
-		
+		if (!isEmpty())
+			tail = tail.next = new Node(newEntry);
+		else
+			head = tail = new Node(newEntry);
 	}
 
 	@Override
 	public T dequeue() {
-		// TODO Auto-generated method stub
+		T result = null;
+		if (!isEmpty()) {
+			result = head.data;
+			head = head.next;
+			numEntries--;
+			return result;
+		}
 		return null;
 	}
 
 	@Override
 	public T peek() {
-		// TODO Auto-generated method stub
+		if (!isEmpty()) {
+			return head.data;
+		}
 		return null;
 	}
 
 	@Override
 	public boolean isEmpty() {
-		// TODO Auto-generated method stub
-		return false;
+		return head == null;
 	}
 
 	@Override
 	public void clear() {
-		// TODO Auto-generated method stub
-		
+		tail = null;
+		head = null;
+		numEntries = 0;
 	}
 	
 	public String toString() {
@@ -59,5 +70,14 @@ public class LinkedQueue<T> implements Queue<T> {
 			next = nextNode;	
 		} // end constructor
 	} // end Node
+	
+	public static void main(String args[]) {
+		LinkedQueue<String> lq = new LinkedQueue<String>();
+		lq.enqueue("Thomas");
+		lq.enqueue("Gerald");
+		lq.dequeue();
+		lq.enqueue("Cotroneo");
+		lq.peek();
+	}
 
 }
