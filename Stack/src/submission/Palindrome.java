@@ -1,8 +1,16 @@
 package submission;
 
 public class Palindrome {
+
 	public static boolean isPalindrome(String s) {
-		// TODO use a stack to determine if s is palindrome
-		return false;
+		int n = s.length();
+		for (int i = 0; i < (n / 2) + 1; i++) {
+			if (s.charAt(i) != s.charAt(n - i - 1)) {
+				return false;
+				}
+		     
+		}
+		return true;
 	}
+	
 }
