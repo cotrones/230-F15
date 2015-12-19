@@ -3,36 +3,42 @@ package submission;
 import adt.Stack;
 
 public class LinkedStack<T> implements Stack<T> {
-	private Node top;
+	private Node top = null;
+	private int numEntries = 0;
 	
 	@Override
 	public void push(T newEntry) {
-		// TODO Auto-generated method stub
-		
+		top = new Node(newEntry, top);
+		numEntries++;
 	}
 
 	@Override
 	public T pop() {
-		// TODO Auto-generated method stub
+		if (!isEmpty()) {
+			T temp = top.data;
+			top = top.next;
+			numEntries--;
+			return temp;
+		}
 		return null;
 	}
 
 	@Override
 	public T peek() {
-		// TODO Auto-generated method stub
+		if (!isEmpty()) {
+			return top.data;
+		}
 		return null;
 	}
 
 	@Override
 	public boolean isEmpty() {
-		// TODO Auto-generated method stub
-		return false;
+		return top == null;
 	}
 
 	@Override
 	public void clear() {
-		// TODO Auto-generated method stub
-		
+		top = null;	
 	}
 	
 	public String toString() {
@@ -59,5 +65,14 @@ public class LinkedStack<T> implements Stack<T> {
 			next = nextNode;	
 		} // end constructor
 	} // end Node
+	
+	public static void main(String args[]) {
+		LinkedStack<String> ls = new LinkedStack<String>();
+		ls.push("Thomas");
+		ls.push("Gerald");
+		ls.pop();
+		ls.push("Cotroneo");
+		ls.peek();
+	}
 
 }
